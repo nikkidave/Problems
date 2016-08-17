@@ -7,33 +7,33 @@ public class Main {
     public static void main(String[] args) {
         int[] nums = {1,2,3};
 
-        System.out.println("permutations are" + permute(nums));
+        System.out.println("permutations are" + permutations(nums));
 
     }
 
-    public static List< List < Integer > > permute(int[] nums) {
+    public static List< List < Integer > > permutations(int[] nums) {
         List< List < Integer > > result = new ArrayList< List < Integer > >();
-        List< Integer > curList = new ArrayList<Integer>();
+        List< Integer > currentList = new ArrayList<Integer>();
 
         for(int i : nums) {
             if(result.isEmpty()) {
-                curList.add(i);
-                result.add(curList);
+                currentList.add(i);
+                result.add(currentList);
             }else {
-                List< List< Integer > > newResult = new ArrayList< List< Integer > >();
+                List< List< Integer > > actualResult = new ArrayList< List< Integer > >();
 
 
                 int resultSize = result.size();
                 for(int j = 0; j < resultSize; j ++) {
-                    curList = result.get(j);
-                    int curListSize = curList.size();
+                    currentList = result.get(j);
+                    int curListSize = currentList.size();
                     for(int k = 0; k <= curListSize; k ++) {
-                        List< Integer > ls = new ArrayList< Integer >(curList);
+                        List< Integer > ls = new ArrayList< Integer >(currentList);
                         ls.add(k, i);
-                        newResult.add(ls);
+                        actualResult.add(ls);
                     }
                 }
-                result = newResult;
+                result = actualResult;
             }
         }
 
